@@ -18,7 +18,7 @@ module HomebrewEnvExtension
       self['CMAKE_PREFIX_PATH'] = "#{HOMEBREW_PREFIX}"
     end
 
-    if MACOS_VERSION >= 10.6 and (self['HOMEBREW_USE_LLVM'] or ARGV.include? '--use-llvm')
+    if SUNOS_VERSION >= 10.6 and (self['HOMEBREW_USE_LLVM'] or ARGV.include? '--use-llvm')
       xcode_path = `/usr/bin/xcode-select -print-path`.chomp
       xcode_path = "/Developer" if xcode_path.to_s.empty?
       self['CC'] = "#{xcode_path}/usr/bin/llvm-gcc"
@@ -43,7 +43,7 @@ module HomebrewEnvExtension
     # http://gcc.gnu.org/onlinedocs/gcc-4.2.1/gcc/i386-and-x86_002d64-Options.html
     # we don't set, eg. -msse3 because the march flag does that for us
     #   http://gcc.gnu.org/onlinedocs/gcc-4.3.3/gcc/i386-and-x86_002d64-Options.html
-    if MACOS_VERSION >= 10.6
+    if SUNOS_VERSION >= 10.6
       case Hardware.intel_family
       when :nehalem, :penryn, :core2
         # the 64 bit compiler adds -mfpmath=sse for us
@@ -130,12 +130,12 @@ module HomebrewEnvExtension
   end
 
   def osx_10_4
-    self['MACOSX_DEPLOYMENT_TARGET']="10.4"
+    self['SUNOSX_DEPLOYMENT_TARGET']="10.4"
     remove_from_cflags(/ ?-mmacosx-version-min=10\.\d/)
     append_to_cflags('-mmacosx-version-min=10.4')
   end
   def osx_10_5
-    self['MACOSX_DEPLOYMENT_TARGET']="10.5"
+    self['SUNOSX_DEPLOYMENT_TARGET']="10.5"
     remove_from_cflags(/ ?-mmacosx-version-min=10\.\d/)
     append_to_cflags('-mmacosx-version-min=10.5')
   end

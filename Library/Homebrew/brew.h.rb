@@ -451,7 +451,7 @@ def brew_install
 
   ################################################################# warnings
   begin
-    if MACOS_VERSION >= 10.6
+    if SUNOS_VERSION >= 10.6
       opoo "You should upgrade to Xcode 3.2.3" if llvm_build < RECOMMENDED_LLVM
     else
       opoo "You should upgrade to Xcode 3.1.4" if (gcc_40_build < RECOMMENDED_GCC_40) or (gcc_42_build < RECOMMENDED_GCC_42)
@@ -572,7 +572,7 @@ def gcc_40_build
 end
 
 def llvm_build
-  if MACOS_VERSION >= 10.6
+  if SUNOS_VERSION >= 10.6
     xcode_path = `/usr/bin/xcode-select -print-path`.chomp
     return nil if xcode_path.empty?
     `#{xcode_path}/usr/bin/llvm-gcc -v 2>&1` =~ /LLVM build (\d{4,})/
