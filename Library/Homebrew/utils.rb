@@ -124,7 +124,7 @@ def quiet_system cmd, *args
 end
 
 def curl *args
-  safe_system '/usr/bin/curl', '-f#LA', HOMEBREW_USER_AGENT, *args unless args.empty?
+  safe_system '/usr/local/bin/curl', '-f#LA', HOMEBREW_USER_AGENT, *args unless args.empty?
 end
 
 def puts_columns items, cols = 4
@@ -155,7 +155,7 @@ def exec_editor *args
       editor='edit'
     else
       # Default to vim
-      editor='/usr/bin/vim'
+      editor='/usr/bin/vi'
     end
   end
   # we split the editor because especially on mac "mate -w" is common

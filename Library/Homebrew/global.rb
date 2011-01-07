@@ -6,7 +6,7 @@ require 'utils'
 ARGV.extend(HomebrewArgvExtension)
 
 HOMEBREW_VERSION = '0.7.1'
-HOMEBREW_WWW = 'http://mxcl.github.com/homebrew/'
+HOMEBREW_WWW = 'http://rmyers.github.com/homebrew/'
 
 if Process.uid == 0
   # technically this is not the correct place, this cache is for *all users*
@@ -31,12 +31,12 @@ else
   HOMEBREW_CELLAR = HOMEBREW_REPOSITORY+'Cellar'
 end
 
-MACOS_FULL_VERSION = `/usr/bin/sw_vers -productVersion`.chomp
-MACOS_VERSION = /(10\.\d+)(\.\d+)?/.match(MACOS_FULL_VERSION).captures.first.to_f
+SUNOS_FULL_VERSION = `uname -imprs`.chomp
+SUNOS_VERSION = `uname -r`.chomp
 
-HOMEBREW_USER_AGENT = "Homebrew #{HOMEBREW_VERSION} (Ruby #{RUBY_VERSION}-#{RUBY_PATCHLEVEL}; Mac OS X #{MACOS_FULL_VERSION})"
+HOMEBREW_USER_AGENT = "Homebrew #{HOMEBREW_VERSION} (Ruby #{RUBY_VERSION}-#{RUBY_PATCHLEVEL}; SunOS #{SUNOS_FULL_VERSION})"
 
 
 RECOMMENDED_LLVM = 2326
-RECOMMENDED_GCC_40 = (MACOS_VERSION >= 10.6) ? 5494 : 5493
-RECOMMENDED_GCC_42 = (MACOS_VERSION >= 10.6) ? 5664 : 5577
+RECOMMENDED_GCC_40 = (SUNOS_VERSION >= 5.10) ? 5494 : 5493
+RECOMMENDED_GCC_42 = (SUNOS_VERSION >= 5.10) ? 5664 : 5577

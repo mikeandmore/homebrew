@@ -43,7 +43,7 @@ def check_for_macgpg2
 end
 
 def check_for_stray_dylibs
-  unbrewed_dylibs = Dir['/usr/local/lib/*.dylib'].select { |f| File.file? f and not File.symlink? f }
+  unbrewed_dylibs = Dir[HOMEBREW_PREFIX+'lib/*.so*'].select { |f| File.file? f and not File.symlink? f }
 
   # Dylibs which are generally OK should be added to this list,
   # with a short description of the software they come with.
@@ -55,9 +55,9 @@ def check_for_stray_dylibs
   bad_dylibs = unbrewed_dylibs.reject {|d| white_list.key? File.basename(d) }
   return if bad_dylibs.empty?
 
-  opoo "Unbrewed dylibs were found in /usr/local/lib"
+  opoo "Unbrewed dylibs were found in #{HOMEBREW_PREFIX}lib"
   puts <<-EOS.undent
-    You have unbrewed dylibs in /usr/local/lib. If you didn't put them there on purpose,
+    You have unbrewed dylibs in #{HOMEBREW_PREFIX}lib. If you didn't put them there on purpose,
     they could cause problems when building Homebrew formulae.
 
     Unexpected dylibs (delete if they are no longer needed):
@@ -137,7 +137,7 @@ def check_gcc_versions
 end
 
 def check_cc_symlink
-    which_cc = Pathname.new('/usr/bin/cc').realpath.basename.to_s
+    which_cc = Pathname.new('/usr/ucb/cc').realpath.basename.to_s
     if which_cc == "llvm-gcc-4.2"
       puts <<-EOS.undent
         You changed your cc to symlink to llvm.
