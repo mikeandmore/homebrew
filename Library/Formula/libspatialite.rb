@@ -13,7 +13,7 @@ class Libspatialite <Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
-                          "--target=macosx"
+                          "--target=SUNOSx"
     system "make install"
   end
 end

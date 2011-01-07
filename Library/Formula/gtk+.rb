@@ -12,7 +12,7 @@ class Gtkx <Formula
 
   # Used by pango, but keg-only, so needs to be added to
   # the flags for gtk+ explicitly.
-  depends_on 'cairo' if MACOS_VERSION < 10.6
+  depends_on 'cairo' if SUNOS_VERSION < 10.6
 
   depends_on 'pango'
   depends_on 'jasper' => :optional

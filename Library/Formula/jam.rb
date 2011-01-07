@@ -14,6 +14,6 @@ class Jam <Formula
     end
 
     system "make"
-    bin.install ["bin.macosx/jam", "bin.macosx/mkjambase"]
+    bin.install ["bin.SUNOSx/jam", "bin.SUNOSx/mkjambase"]
   end
 end

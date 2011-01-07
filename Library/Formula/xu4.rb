@@ -27,18 +27,18 @@ class Xu4 <Formula
 
     Dir.chdir 'src' do
       # Copy over SDL's ObjC main files
-      `cp -R #{Formula.factory('sdl').libexec}/* macosx`
+      `cp -R #{Formula.factory('sdl').libexec}/* SUNOSx`
 
-      inreplace "Makefile.macosx" do |s|
+      inreplace "Makefile.SUNOSx" do |s|
         s.remove_make_var! "WHICH_ARCH"
-        s.change_make_var! "WHICH_FRAMEWORK", "MacOSX#{MACOS_VERSION}.sdk"
+        s.change_make_var! "WHICH_FRAMEWORK", "SUNOSX#{SUNOS_VERSION}.sdk"
         s.change_make_var! "BUNDLE_CONTENTS", "xu4.app/Contents"
         s.gsub! "../../ultima4.zip", "../ultima4-1.01.zip"
         s.gsub! "../../u4upgrad.zip", "../u4upgrad.zip"
       end
 
-      system "make -f Makefile.macosx"
-      system "make -f Makefile.macosx install"
+      system "make -f Makefile.SUNOSx"
+      system "make -f Makefile.SUNOSx install"
 
       prefix.install "xu4.app"
     end
@@ -51,16 +51,16 @@ end
 
 
 __END__
-diff --git a/src/Makefile.macosx b/src/Makefile.macosx
+diff --git a/src/Makefile.SUNOSx b/src/Makefile.SUNOSx
 index 9745ff4..88cb193 100644
---- a/src/Makefile.macosx
-+++ b/src/Makefile.macosx
+--- a/src/Makefile.SUNOSx
++++ b/src/Makefile.SUNOSx
 @@ -2,6 +2,9 @@
- # $Id: Makefile.macosx 2717 2008-04-03 07:14:46Z steven-j-s $
+ # $Id: Makefile.SUNOSx 2717 2008-04-03 07:14:46Z steven-j-s $
  #
  
 +WHICH_ARCH=-arch i386 -arch ppc
-+WHICH_FRAMEWORK=MacOSX10.4u.sdk
++WHICH_FRAMEWORK=SUNOSX10.4u.sdk
 +
  BUNDLE_CONTENTS=../../xu4.app/Contents
  
@@ -86,11 +86,11 @@ index 9745ff4..88cb193 100644
  # Optimising
  #DEBUGCXXFLAGS=-O2 -mdynamic-no-pic
  
--CXXFLAGS=$(FEATURES) -Wall -I. $(UIFLAGS) $(shell xml2-config --cflags) -DVERSION=\"$(VERSION)\" $(DEBUGCXXFLAGS) -DNPERF -DMACOSX -DMACOSX_USER_FILES_PATH=\"/Library/Application\ Support/xu4\" -no-cpp-precomp -L$(LIBPNGDIR) -isysroot /Developer/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc
-+CXXFLAGS=$(FEATURES) -Wall -I. $(UIFLAGS) $(shell xml2-config --cflags) -DVERSION=\"$(VERSION)\" $(DEBUGCXXFLAGS) -DNPERF -DMACOSX -DMACOSX_USER_FILES_PATH=\"/Library/Application\ Support/xu4\" -no-cpp-precomp -L$(LIBPNGDIR) -isysroot /Developer/SDKs/$(WHICH_FRAMEWORK) $(WHICH_ARCH)
+-CXXFLAGS=$(FEATURES) -Wall -I. $(UIFLAGS) $(shell xml2-config --cflags) -DVERSION=\"$(VERSION)\" $(DEBUGCXXFLAGS) -DNPERF -DSUNOSX -DSUNOSX_USER_FILES_PATH=\"/Library/Application\ Support/xu4\" -no-cpp-precomp -L$(LIBPNGDIR) -isysroot /Developer/SDKs/SUNOSX10.4u.sdk -arch i386 -arch ppc
++CXXFLAGS=$(FEATURES) -Wall -I. $(UIFLAGS) $(shell xml2-config --cflags) -DVERSION=\"$(VERSION)\" $(DEBUGCXXFLAGS) -DNPERF -DSUNOSX -DSUNOSX_USER_FILES_PATH=\"/Library/Application\ Support/xu4\" -no-cpp-precomp -L$(LIBPNGDIR) -isysroot /Developer/SDKs/$(WHICH_FRAMEWORK) $(WHICH_ARCH)
  CFLAGS=$(CXXFLAGS)
 -LIBS=$(LIBPNGDIR)/libpng.a $(UILIBS) $(shell xml2-config --libs) -lobjc -lz -arch i386 -arch ppc
 +LIBS=-lpng $(UILIBS) $(shell xml2-config --libs) -lobjc -lz $(WHICH_ARCH)
  INSTALL=install
  
- OBJS=macosx/SDLMain.o macosx/osxinit.o macosx/osxerror.o
+ OBJS=SUNOSx/SDLMain.o SUNOSx/osxinit.o SUNOSx/osxerror.o

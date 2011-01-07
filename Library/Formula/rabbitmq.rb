@@ -6,7 +6,7 @@ class Rabbitmq <Formula
   md5 '65d0644aa4bf24398d13553b6aa6465f'
 
   depends_on 'erlang'
-  depends_on 'simplejson' => :python if MACOS_VERSION < 10.6
+  depends_on 'simplejson' => :python if SUNOS_VERSION < 10.6
 
   def patches
     # Can't build manpages without a lot of other junk, so disable

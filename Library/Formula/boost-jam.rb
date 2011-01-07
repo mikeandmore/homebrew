@@ -7,6 +7,6 @@ class BoostJam <Formula
 
   def install
     system "./build.sh"
-    bin.install Dir["bin.macos*/bjam"]
+    bin.install Dir["bin.SUNOS*/bjam"]
   end
 end

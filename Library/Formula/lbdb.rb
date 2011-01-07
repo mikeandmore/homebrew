@@ -493,7 +493,7 @@ index 0000000..635f5f8
 +				GCC_WARN_UNUSED_VARIABLE = YES;
 +				ONLY_ACTIVE_ARCH = YES;
 +				PREBINDING = NO;
-+				SDKROOT = macosx10.5;
++				SDKROOT = SUNOSx10.5;
 +			};
 +			name = Debug;
 +		};
@@ -505,7 +505,7 @@ index 0000000..635f5f8
 +				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 +				GCC_WARN_UNUSED_VARIABLE = YES;
 +				PREBINDING = NO;
-+				SDKROOT = macosx10.5;
++				SDKROOT = SUNOSx10.5;
 +			};
 +			name = Release;
 +		};

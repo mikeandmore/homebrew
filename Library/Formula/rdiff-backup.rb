@@ -11,7 +11,7 @@ class RdiffBackup <Formula
     ENV.no_optimization
     system "python", "setup.py", "--librsync-dir=#{prefix}", "build"
 
-    libexec.install Dir['build/lib.macosx*/rdiff_backup']
+    libexec.install Dir['build/lib.SUNOSx*/rdiff_backup']
     libexec.install Dir['build/scripts-*/*']
 
     bin.mkpath

@@ -8,7 +8,7 @@ class Disco <Formula
   head 'git://github.com/tuulos/disco.git'
 
   depends_on 'erlang'
-  depends_on 'simplejson' => :python if MACOS_VERSION < 10.6
+  depends_on 'simplejson' => :python if SUNOS_VERSION < 10.6
   depends_on 'libcmph'
 
   def install

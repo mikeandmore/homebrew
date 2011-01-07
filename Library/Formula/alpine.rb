@@ -13,7 +13,7 @@ class Alpine <Formula
   end
 
   def patches
-    DATA if MACOS_VERSION >= 10.6
+    DATA if SUNOS_VERSION >= 10.6
   end
 end
 

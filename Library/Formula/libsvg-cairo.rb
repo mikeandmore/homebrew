@@ -9,7 +9,7 @@ class LibsvgCairo <Formula
   depends_on 'pkg-config' => :build
   depends_on 'libpng'
   depends_on 'libsvg'
-  depends_on 'cairo' if MACOS_VERSION < 10.6
+  depends_on 'cairo' if SUNOS_VERSION < 10.6
 
   def install
     system "./configure", "--disable-dependency-tracking", "--disable-debug", "--prefix=#{prefix}"

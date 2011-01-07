@@ -15,7 +15,7 @@ class Bigloo <Formula
              "--mandir=#{man1}", # This is correct for this brew
              "--infodir=#{info}",
              "--customgc=yes",
-             "--os-macosx" ]
+             "--os-SUNOSx" ]
 
     # SRFI 27 is 32-bit only
     args << "--disable-srfi27" if snow_leopard_64?

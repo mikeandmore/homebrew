@@ -6,7 +6,7 @@ class Multitail <Formula
   md5 '6496b3d78660ff8d11c743a0d03cca34'
 
   def install
-    system "env", "DESTDIR=#{prefix}", "make", "-f", "makefile.macosx", "multitail"
+    system "env", "DESTDIR=#{prefix}", "make", "-f", "makefile.SUNOSx", "multitail"
 
     bin.install "multitail"
     man1.install gzip("multitail.1")

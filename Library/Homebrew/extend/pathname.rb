@@ -160,7 +160,7 @@ class Pathname
     return $1 if $1
 
     # eg. otp_src_R13B (this is erlang's style)
-    # eg. astyle_1.23_macosx.tar.gz
+    # eg. astyle_1.23_SUNOSx.tar.gz
     stem.scan(/_([^_]+)/) do |match|
       return match.first if /\d/.match $1
     end

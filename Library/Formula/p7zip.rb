@@ -13,9 +13,9 @@ class P7zip <Formula
 
   def install
     if build_32bit?
-      mv 'makefile.macosx_32bits', 'makefile.machine'
+      mv 'makefile.SUNOSx_32bits', 'makefile.machine'
     else
-      mv 'makefile.macosx_64bits', 'makefile.machine'
+      mv 'makefile.SUNOSx_64bits', 'makefile.machine'
     end
 
     system "make all3"

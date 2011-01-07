@@ -28,7 +28,7 @@ class Vice <Formula
                           "--disable-zlibtest"
     system "make"
     system "make bindist"
-    prefix.install Dir['vice-macosx-*/*']
+    prefix.install Dir['vice-SUNOSx-*/*']
     remove_unused_icons
   end
 

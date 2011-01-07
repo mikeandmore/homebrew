@@ -10,7 +10,7 @@ class Collectd <Formula
   def install
     args = ["--disable-debug", "--disable-dependency-tracking",
             "--prefix=#{prefix}", "--localstatedir=#{var}"]
-    args << "--disable-embedded-perl" if MACOS_VERSION < 10.6
+    args << "--disable-embedded-perl" if SUNOS_VERSION < 10.6
 
     system "./configure", *args
     system "make install"

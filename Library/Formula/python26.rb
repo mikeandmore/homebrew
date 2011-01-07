@@ -3,12 +3,12 @@ require 'formula'
 <<-COMMENTS
 Versions
 --------
-This formula is currently tracking version 2.7.x.
+This formula is currently tracking version 2.6.x.
 
 Python 3.x is available as a separate formula:
   brew install python3
-Python 2.6 is available as:
-  brew install python26
+Python 2.7 is available as:
+  brew install python
 
 Options
 -------
@@ -20,7 +20,7 @@ site-packages
 The "site-packages" folder lives in the Cellar, under the "lib" folder.
 
 A .pth file is added to the Cellar site-packages that adds the corresponding
-HOMEBREW_PREFIX folder (/usr/local/lib/python2.7/site-packages by default)
+HOMEBREW_PREFIX folder (/usr/local/lib/python2.6/site-packages by default)
 to sys.path. Note that this alternate folder doesn't itself support .pth files.
 
 pip / distribute
@@ -39,10 +39,10 @@ COMMENTS
 
 
 class Python <Formula
-  url 'http://www.python.org/ftp/python/2.7.1/Python-2.7.1.tar.bz2'
+  url 'http://www.python.org/ftp/python/2.6.6/Python-2.6.6.tar.bz2'
   homepage 'http://www.python.org/'
-  md5 'aa27bc25725137ba155910bd8e5ddc4f'
-
+  md5 'cf4e6881bb84a7ce6089e4a307f71f14'
+  
   depends_on 'readline' => :optional  # Prefer over OS X's libedit
   depends_on 'sqlite'   => :optional  # Prefer over OS X's older version
   depends_on 'gdbm'     => :optional
@@ -57,7 +57,7 @@ class Python <Formula
   skip_clean ['bin', 'lib']
 
   def site_packages
-    return lib+"python2.7/site-packages"
+    return lib+"python2.6/site-packages"
   end
 
   def exec_prefix
@@ -66,7 +66,7 @@ class Python <Formula
 
   def prefix_site_packages
     # The HOMEBREW_PREFIX location of site-packages
-    HOMEBREW_PREFIX+"lib/python2.7/site-packages"
+    HOMEBREW_PREFIX+"lib/python2.6/site-packages"
   end
 
   def install
