@@ -35,7 +35,8 @@ class Hardware
   end
 
   def self.processor_count
-    @@processor_count ||= `/usr/sbin/sysctl -n hw.ncpu`.to_i
+    count_line `/usr/sbin/psrinfo |tail -1`.chomp
+    @@processor_count ||= /(d+)/.match(count_line).captures.first.to_i
   end
   
   def self.cores_as_words

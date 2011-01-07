@@ -9,10 +9,11 @@ Quick Install to /usr/local
 Installation is slightly more tricky on Solaris. So there is no quick installer
 at the moment. Currently there are a few dependencies you'll need to get first.
 
-	These are on sunfreeware.com and install in /usr/local
-    [GCC][gcc]
-    [Curl][curl]
-    [Ruby][ruby]
+These are on sunfreeware.com and install in /usr/local
+
+* [GCC][gcc]
+* [Curl][curl]
+* [Ruby][ruby]
 
 
 Dude! Just give me a one-liner!

@@ -32,7 +32,7 @@ else
 end
 
 SUNOS_FULL_VERSION = `uname -imprs`.chomp
-SUNOS_VERSION = `uname -r`.chomp
+SUNOS_VERSION = `uname -r`.chomp.to_f
 
 HOMEBREW_USER_AGENT = "Homebrew #{HOMEBREW_VERSION} (Ruby #{RUBY_VERSION}-#{RUBY_PATCHLEVEL}; SunOS #{SUNOS_FULL_VERSION})"
 
