@@ -8,13 +8,7 @@ ARGV.extend(HomebrewArgvExtension)
 HOMEBREW_VERSION = '0.7.1'
 HOMEBREW_WWW = 'http://rmyers.github.com/homebrew/'
 
-if Process.uid == 0
-  # technically this is not the correct place, this cache is for *all users*
-  # so in that case, maybe we should always use it, root or not?
-  HOMEBREW_CACHE=Pathname.new("/Library/Caches/Homebrew")
-else
-  HOMEBREW_CACHE=Pathname.new("~/Library/Caches/Homebrew").expand_path
-end
+HOMEBREW_CACHE = "/tmp/homebrew_cache"
 
 if not defined? HOMEBREW_BREW_FILE
   HOMEBREW_BREW_FILE = ENV['HOMEBREW_BREW_FILE'] || `which brew`.chomp
