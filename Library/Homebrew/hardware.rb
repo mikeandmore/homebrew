@@ -35,8 +35,7 @@ class Hardware
   end
 
   def self.processor_count
-    count_line `/usr/sbin/psrinfo |tail -1`.chomp
-    @@processor_count ||= /(d+)/.match(count_line).captures.first.to_i
+    @@processor_count ||= `/usr/sbin/psrinfo |tail -1`.chomp.to_i
   end
   
   def self.cores_as_words
