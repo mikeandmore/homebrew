@@ -21,8 +21,7 @@ SUNOS_VERSION=10.6
 
 (HOMEBREW_PREFIX+'Library/Formula').mkpath
 Dir.chdir HOMEBREW_PREFIX
-puts `cwd`
-at_exit { HOMEBREW_PREFIX.parent.rmtree }
+at_exit { Dir.chdir Pathname.new '/tmp' ; HOMEBREW_PREFIX.parent.rmtree }
 
 # Test fixtures and files can be found relative to this path
 TEST_FOLDER = Pathname.new(ABS__FILE__).parent.realpath

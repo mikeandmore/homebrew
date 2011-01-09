@@ -39,7 +39,7 @@ module HomebrewEnvExtension
     # http://gcc.gnu.org/onlinedocs/gcc-4.2.1/gcc/i386-and-x86_002d64-Options.html
     # we don't set, eg. -msse3 because the march flag does that for us
     #   http://gcc.gnu.org/onlinedocs/gcc-4.3.3/gcc/i386-and-x86_002d64-Options.html
-    if SUNOS_VERSION >= 10.6
+    if SUNOS_VERSION >= 5.0
       case Hardware.intel_family
       when :nehalem, :penryn, :core2
         # the 64 bit compiler adds -mfpmath=sse for us
@@ -126,14 +126,10 @@ module HomebrewEnvExtension
   end
 
   def osx_10_4
-    self['SUNOSX_DEPLOYMENT_TARGET']="10.4"
-    remove_from_cflags(/ ?-mmacosx-version-min=10\.\d/)
-    append_to_cflags('-mmacosx-version-min=10.4')
+    puts 'Ignoring request for MACOSX Deployment Target'
   end
   def osx_10_5
-    self['SUNOSX_DEPLOYMENT_TARGET']="10.5"
-    remove_from_cflags(/ ?-mmacosx-version-min=10\.\d/)
-    append_to_cflags('-mmacosx-version-min=10.5')
+    puts 'Ignoring request for MACOSX Deployment Target'
   end
 
   def minimal_optimization
@@ -168,7 +164,8 @@ module HomebrewEnvExtension
   # Snow Leopard defines an NCURSES value the opposite of most distros
   # See: http://bugs.python.org/issue6848
   def ncurses_define
-    append 'CPPFLAGS', "-DNCURSES_OPAQUE=0"
+    puts 'Make sure you have ncurses installed to run this'
+    #append 'CPPFLAGS', "-DNCURSES_OPAQUE=0"
   end
 
   # Shortcuts for reading common flags

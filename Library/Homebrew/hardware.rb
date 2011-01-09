@@ -3,20 +3,11 @@ class Hardware
   # Look in <mach/machine.h> for decoding info.
 
   def self.cpu_type
-    @@cpu_type ||= `/usr/sbin/sysctl -n hw.cputype`.to_i
-
-    case @@cpu_type
-    when 7
-      :intel
-    when 18
-      :ppc
-    else
-      :dunno
-    end
+    @@cpu_type ||= `/usr/bin/uname -p`
   end
 
   def self.intel_family
-    @@intel_family ||= `/usr/sbin/sysctl -n hw.cpufamily`.to_i
+    @@intel_family ||= '999999999'
 
     case @@intel_family
     when 0x73d67300 # Yonah: Core Solo/Duo
@@ -35,7 +26,7 @@ class Hardware
   end
 
   def self.processor_count
-    @@processor_count ||= `/usr/sbin/psrinfo |tail -1`.chomp.to_i
+    @@processor_count ||= `/usr/sbin/psrinfo -p`.chomp.to_i
   end
   
   def self.cores_as_words
@@ -53,23 +44,15 @@ class Hardware
   end
 
   def self.is_64_bit?
-    self.sysctl_bool("hw.cpu64bit_capable")
+    self.bits == 64
   end
   
   def self.bits
-    Hardware.is_64_bit? ? 64 : 32
+    @@bits ||= `/usr/bin/isainfo -kv`.chomp.to_i
   end
 
-protected
-  def self.sysctl_bool(property)
-    result = nil
-    IO.popen("/usr/sbin/sysctl -n #{property} 2>/dev/null") do |f|
-      result = f.gets.to_i # should be 0 or 1
-    end
-    $?.success? && result == 1 # sysctl call succeded and printed 1
-  end
 end
 
 def snow_leopard_64?
-  SUNOS_VERSION >= 10.6 and Hardware.is_64_bit?
+  return false
 end
