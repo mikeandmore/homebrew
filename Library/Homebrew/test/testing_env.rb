@@ -21,6 +21,7 @@ SUNOS_VERSION=10.6
 
 (HOMEBREW_PREFIX+'Library/Formula').mkpath
 Dir.chdir HOMEBREW_PREFIX
+puts `cwd`
 at_exit { HOMEBREW_PREFIX.parent.rmtree }
 
 # Test fixtures and files can be found relative to this path

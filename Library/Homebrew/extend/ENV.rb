@@ -9,14 +9,10 @@ module HomebrewEnvExtension
     delete('LDFLAGS')
 
     self['MAKEFLAGS']="-j#{Hardware.processor_count}"
-
-    unless HOMEBREW_PREFIX.to_s == '/usr/local'
-      # /usr/local is already an -isystem and -L directory so we skip it
-      self['CPPFLAGS'] = "-isystem #{HOMEBREW_PREFIX}/include"
-      self['LDFLAGS'] = "-L#{HOMEBREW_PREFIX}/lib"
-      # CMake ignores the variables above
-      self['CMAKE_PREFIX_PATH'] = "#{HOMEBREW_PREFIX}"
-    end
+    self['CPPFLAGS'] = "-I#{HOMEBREW_PREFIX}/include"
+    self['LDFLAGS'] = "-L#{HOMEBREW_PREFIX}/lib"
+    # CMake ignores the variables above
+    self['CMAKE_PREFIX_PATH'] = "#{HOMEBREW_PREFIX}"
 
     if SUNOS_VERSION >= 10.6 and (self['HOMEBREW_USE_LLVM'] or ARGV.include? '--use-llvm')
       xcode_path = `/usr/bin/xcode-select -print-path`.chomp

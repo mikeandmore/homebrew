@@ -124,7 +124,13 @@ def quiet_system cmd, *args
 end
 
 def curl *args
-  safe_system '/usr/local/bin/curl', '-f#LA', HOMEBREW_USER_AGENT, *args unless args.empty?
+  require 'extend/pathname'
+  if Pathname.new('/usr/local/bin/curl').exist?
+    mycurl = '/usr/local/bin/curl'
+  elsif Pathname.new('/usr/bin/curl').exist?
+    mycurl = '/usr/bin/curl'
+  end
+  safe_system mycurl, '-f#LA', HOMEBREW_USER_AGENT, *args unless args.empty?
 end
 
 def puts_columns items, cols = 4
