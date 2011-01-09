@@ -286,5 +286,5 @@ def dump_build_env env
 end
 
 def x11_installed?
-  Pathname.new('/usr/X11/lib/libpng.dylib').exist?
+  Pathname.new('/usr/X11/lib/libX.so').exist?
 end
