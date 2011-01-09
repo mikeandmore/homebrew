@@ -175,7 +175,7 @@ def github_info name
   user = 'mxcl'
   branch = 'master'
 
-  if system "/usr/bin/which -s git"
+  if system "/usr/bin/which git"
     gh_user=`git config --global github.user 2>/dev/null`.chomp
     /^\*\s*(.*)/.match(`git --work-tree=#{HOMEBREW_REPOSITORY} branch 2>/dev/null`)
     unless $1.nil? || $1.empty? || gh_user.empty?
@@ -366,7 +366,7 @@ def macports_or_fink_installed?
   # http://github.com/mxcl/homebrew/issues/#issue/48
 
   %w[port fink].each do |ponk|
-    path = `/usr/bin/which -s #{ponk}`
+    path = `/usr/bin/which #{ponk}`
     return ponk unless path.empty?
   end
 
