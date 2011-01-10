@@ -26,7 +26,7 @@ class Hardware
   end
 
   def self.processor_count
-    @@processor_count ||= `/usr/sbin/psrinfo -p`.chomp.to_i
+    @@processor_count ||= `/usr/sbin/psrinfo |tail -1`.chomp.to_i + 1
   end
   
   def self.cores_as_words
