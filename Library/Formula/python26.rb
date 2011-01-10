@@ -38,7 +38,7 @@ to get the appropriate site-packages path.
 COMMENTS
 
 
-class Python <Formula
+class Python26 <Formula
   url 'http://www.python.org/ftp/python/2.6.6/Python-2.6.6.tar.bz2'
   homepage 'http://www.python.org/'
   md5 'cf4e6881bb84a7ce6089e4a307f71f14'
