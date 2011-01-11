@@ -137,18 +137,8 @@ def check_gcc_versions
 end
 
 def check_cc_symlink
-    which_cc = Pathname.new('/usr/ucb/cc').realpath.basename.to_s
-    if which_cc == "llvm-gcc-4.2"
-      puts <<-EOS.undent
-        You changed your cc to symlink to llvm.
-        This bypasses LLVM checks, and some formulae may mysteriously fail to work.
-        You may want to change /usr/bin/cc to point back at gcc.
-
-        To force Homebrew to use LLVM, you can set the "HOMEBREW_LLVM" environmental
-        variable, or pass "--use-llvm" to "brew install".
-
-      EOS
-    end
+    cc = `which gcc`
+    puts "Found gcc at #{cc}"
 end
 
 def __check_subdir_access base
