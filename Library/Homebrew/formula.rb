@@ -509,7 +509,7 @@ EOF
       end
       # -f means it doesn't prompt the user if there are errors, if just
       # exits with non-zero status
-      safe_system '/usr/bin/patch', '-f', *(p[:args])
+      safe_system '/usr/gnu/bin/patch', '-f', *(p[:args])
     end
   end
 

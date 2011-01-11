@@ -8,7 +8,7 @@ module HomebrewEnvExtension
     delete('CPPFLAGS')
     delete('LDFLAGS')
 
-    self['MAKEFLAGS']="-j#{Hardware.processor_count}"
+    self['MAKEFLAGS']="-j #{Hardware.processor_count}"
     self['CPPFLAGS'] = "-I#{HOMEBREW_PREFIX}/include"
     self['LDFLAGS'] = "-L#{HOMEBREW_PREFIX}/lib"
     # CMake ignores the variables above
@@ -22,8 +22,8 @@ module HomebrewEnvExtension
       cflags = ['-O4'] # link time optimisation baby!
     else
       # If these aren't set, many formulae fail to build
-      self['CC'] = '/usr/bin/cc'
-      self['CXX'] = '/usr/bin/c++'
+      self['CC'] = '/usr/gnu/bin/cc'
+      self['CXX'] = '/usr/gnu/bin/cpp'
       cflags = ['-O3']
     end
 
@@ -176,7 +176,7 @@ module HomebrewEnvExtension
 
   def m64
     append_to_cflags '-m64'
-    append 'LDFLAGS', '-arch x86_64'
+    #append 'LDFLAGS', '-arch x86_64'
   end
   def m32
     append_to_cflags '-m32'
@@ -185,12 +185,13 @@ module HomebrewEnvExtension
 
   # i386 and x86_64 only, no PPC
   def universal_binary
-    append_to_cflags '-arch i386 -arch x86_64'
-    self.O3 if self['CFLAGS'].include? '-O4' # O4 seems to cause the build to fail
-    append 'LDFLAGS', '-arch i386 -arch x86_64'
+    puts "Ignoring Universal Build"
+    #append_to_cflags '-arch i386 -arch x86_64'
+    #self.O3 if self['CFLAGS'].include? '-O4' # O4 seems to cause the build to fail
+    #append 'LDFLAGS', '-arch i386 -arch x86_64'
 
     # Can't mix "-march" for a 32-bit CPU  with "-arch x86_64"
-    remove_from_cflags(/-march=\S*/) if Hardware.is_32_bit?
+    #remove_from_cflags(/-march=\S*/) if Hardware.is_32_bit?
   end
 
   def prepend key, value, separator = ' '

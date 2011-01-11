@@ -8,7 +8,7 @@ ARGV.extend(HomebrewArgvExtension)
 HOMEBREW_VERSION = '0.7.1'
 HOMEBREW_WWW = 'http://rmyers.github.com/homebrew/'
 
-HOMEBREW_CACHE = "/tmp/homebrew_cache"
+HOMEBREW_CACHE = Pathname.new("/tmp/homebrew_cache")
 
 if not defined? HOMEBREW_BREW_FILE
   HOMEBREW_BREW_FILE = ENV['HOMEBREW_BREW_FILE'] || `which brew`.chomp

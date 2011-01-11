@@ -23,7 +23,7 @@ class Python3 <Formula
   homepage 'http://www.python.org/'
   md5 'ad5e5f1c07e829321e0a015f8cafe245'
 
-  depends_on 'readline' => :optional  # Prefer over OS X's libedit
+  depends_on 'readline2' => :optional  # Prefer over OS X's libedit
   depends_on 'sqlite'   => :optional  # Prefer over OS X's older version
   depends_on 'gdbm'     => :optional
 

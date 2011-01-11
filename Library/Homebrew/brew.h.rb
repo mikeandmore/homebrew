@@ -172,7 +172,7 @@ end
 
 def github_info name
   formula_name = Formula.path(name).basename
-  user = 'mxcl'
+  user = 'rmyers'
   branch = 'master'
 
   if system "/usr/bin/which git"
