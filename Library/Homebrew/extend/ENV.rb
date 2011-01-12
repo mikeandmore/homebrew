@@ -23,7 +23,7 @@ module HomebrewEnvExtension
     else
       # If these aren't set, many formulae fail to build
       self['CC'] = '/usr/gnu/bin/cc'
-      self['CXX'] = '/usr/gnu/bin/cpp'
+      self['CXX'] = '/usr/bin/gcc'
       cflags = ['-O3']
     end
 
@@ -170,7 +170,7 @@ module HomebrewEnvExtension
 
   # Shortcuts for reading common flags
   def cc;      self['CC'] or "gcc";  end
-  def cxx;     self['CXX'] or "g++"; end
+  def cxx;     self['CXX'] or "gcc"; end
   def cflags;  self['CFLAGS'];       end
   def ldflags; self['LDFLAGS'];      end
 
@@ -180,7 +180,7 @@ module HomebrewEnvExtension
   end
   def m32
     append_to_cflags '-m32'
-    append 'LDFLAGS', '-arch i386'
+    #append 'LDFLAGS', '-arch i386'
   end
 
   # i386 and x86_64 only, no PPC
