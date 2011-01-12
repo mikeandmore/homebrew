@@ -130,7 +130,7 @@ begin
         end
       elsif ARGV.named.empty?
         ENV['CLICOLOR']=nil
-        exec 'ls', *ARGV.options_only<<HOMEBREW_CELLAR if HOMEBREW_CELLAR.exist?
+        exec 'ls', *ARGV.options_only << HOMEBREW_CELLAR if HOMEBREW_CELLAR.exist?
       elsif ARGV.verbose? or not $stdout.tty?
         exec "find", *ARGV.kegs+%w[-not -type d -print]
       else
@@ -152,7 +152,7 @@ begin
         # EDITOR isn't a good fit here, we need a GUI client that actually has
         # a UI for projects, so apologies if this wasn't what you expected,
         # please improve it! :)
-        exec 'mate', *Dir["#{HOMEBREW_REPOSITORY}/Library/*"]<<
+        exec 'vim', *Dir["#{HOMEBREW_REPOSITORY}/Library/*"]<<
                           "#{HOMEBREW_REPOSITORY}/bin/brew"<<
                           "#{HOMEBREW_REPOSITORY}/README.md"
       else

@@ -309,7 +309,7 @@ def prune
       if path.symlink?
         path.unlink unless path.resolved_path_exists?
       elsif path.directory?
-        dirs<<path
+        dirs << path
       end
     end
   end
