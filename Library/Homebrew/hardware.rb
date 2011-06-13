@@ -56,3 +56,4 @@ end
 def snow_leopard_64?
   return false
 end
+

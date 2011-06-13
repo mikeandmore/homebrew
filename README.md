@@ -6,14 +6,11 @@ This is an experimental Solaris fork of [Homebrew][homepage].
 
 Quick Install to /usr/local
 ---------------------------
-Installation is slightly more tricky on Solaris. So there is no quick installer
-at the moment. Currently there are a few dependencies you'll need to get first.
+Use this [script][] to install the Solaris version of 
+Homebrew. First you will need [Ruby][ruby] installed, hop on over to sunfreeware or if you are
+using 5.11 you can search for the package from Oracle.
 
-These are on sunfreeware.com and install in /usr/local
-
-* [GCC][gcc]
-* [Curl][curl]
-* [Ruby][ruby]
+    ruby -e "$(curl -fsSL https://raw.github.com/gist/1021141/)"
 
 
 Dude! Just give me a one-liner!
@@ -24,15 +21,19 @@ Okay then, but please note this installs Homebrew as root and
     curl -LsSf http://github.com/rmyers/homebrew/tarball/master | sudo /usr/bin/tar xvz -C/usr/local --strip 1
 
 
+
 But what packages are available?
 --------------------------------
 Before installing you can
-[browse the Formula folder on GitHub][browse-formulae].
+[browse the Solaris Formula folder on GitHub][browse-formulae].
 
 After installing, you can use `brew search` to find packages or `brew server`
 to browse packages off of a local web server.
 
-Warning not all the formula has been tested on Solaris, but we're working on that.
+All the formula in the Solaris folder are know to work, and when you attempt
+to install it will also check in the Formula folder and give you a warning
+when you are installing. If it works let me know so I can add it to the 
+known good packages.
 
 More Documentation
 ==================
@@ -41,10 +42,12 @@ The [wiki][] is your friend.
 
 Who Are You?
 ============
-I'm Robert Myers and I'm a splendid chap.
+I'm Robert Myers and I'm a splendid chap as well. My main language of choice
+is Python, so forgive me if some things in this fork are wonky.
 
 
 [homepage]:http://mxcl.github.com/homebrew
+[script]:https://gist.github.com/1021141
 [gcc]:http://sunfreeware.com/programlistsparc10.html#gcc34
 [curl]:http://sunfreeware.com/programlistsparc10.html#curl
 [ruby]:http://sunfreeware.com/programlistsparc10.html#ruby
@@ -52,4 +55,4 @@ I'm Robert Myers and I'm a splendid chap.
 [sudo]:http://wiki.github.com/mxcl/homebrew/installation#sudo
 [wiki]:http://wiki.github.com/mxcl/homebrew
 [mxcl]:http://twitter.com/mxcl
-[browse-formulae]:http://github.com/rmyers/homebrew/tree/master/Library/Formula/
+[browse-formulae]:http://github.com/rmyers/homebrew/tree/master/Library/Solaris/
