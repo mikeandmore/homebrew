@@ -328,7 +328,7 @@ class Formula
 
   # an array of all Formula names
   def self.names
-    Dir["#{HOMEBREW_REPOSITORY}/Library/Formula/*.rb"].map{ |f| File.basename f, '.rb' }.sort
+    Dir["#{HOMEBREW_REPOSITORY}/Library/Solaris/*.rb"].map{ |f| File.basename f, '.rb' }.sort
   end
 
   # an array of all Formula, instantiated
@@ -356,12 +356,12 @@ class Formula
   end
 
   def self.aliases
-    Dir["#{HOMEBREW_REPOSITORY}/Library/Aliases/*"].map{ |f| File.basename f }.sort
+    Dir["#{HOMEBREW_REPOSITORY}/Library/Soliases/*"].map{ |f| File.basename f }.sort
   end
 
   def self.canonical_name name
-    formula_with_that_name = HOMEBREW_REPOSITORY+"Library/Formula/#{name}.rb"
-    possible_alias = HOMEBREW_REPOSITORY+"Library/Aliases/#{name}"
+    formula_with_that_name = HOMEBREW_REPOSITORY+"Library/Solaris/#{name}.rb"
+    possible_alias = HOMEBREW_REPOSITORY+"Library/Soliases/#{name}"
     possible_cached_formula = HOMEBREW_CACHE_FORMULA+"#{name}.rb"
 
     if name.include? "/"

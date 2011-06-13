@@ -72,7 +72,6 @@ begin
   # use find on solaris as `which blah` sort of blows
   require 'find'
   ENV["PATH"].split(':').each do |path|
-    puts "searching #{path}"
     Find.find(path) do |file|
       if file == "#{path}/brew-#{cmd}"
         exec "#{path}/brew-#{cmd}", *ARGV
