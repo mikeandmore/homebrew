@@ -1,0 +1,1 @@
+../Formula/ec2-ami-tools.rb

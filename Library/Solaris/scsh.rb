@@ -1,0 +1,1 @@
+../Formula/scsh.rb

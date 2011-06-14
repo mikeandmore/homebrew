@@ -1,0 +1,1 @@
+../Formula/ffmpegthumbnailer.rb

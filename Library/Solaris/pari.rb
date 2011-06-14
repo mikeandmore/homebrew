@@ -1,0 +1,1 @@
+../Formula/pari.rb

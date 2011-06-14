@@ -1,0 +1,1 @@
+../Formula/exiftool.rb

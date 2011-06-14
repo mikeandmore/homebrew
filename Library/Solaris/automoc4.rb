@@ -1,0 +1,1 @@
+../Formula/automoc4.rb

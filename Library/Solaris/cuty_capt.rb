@@ -1,0 +1,1 @@
+../Formula/cuty_capt.rb

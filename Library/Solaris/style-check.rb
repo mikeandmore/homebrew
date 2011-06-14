@@ -1,0 +1,1 @@
+../Formula/style-check.rb

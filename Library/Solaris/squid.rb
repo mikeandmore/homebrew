@@ -1,0 +1,1 @@
+../Formula/squid.rb

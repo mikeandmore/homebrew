@@ -1,0 +1,1 @@
+../Formula/haskell-platform.rb

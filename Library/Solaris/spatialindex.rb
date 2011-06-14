@@ -1,0 +1,1 @@
+../Formula/spatialindex.rb

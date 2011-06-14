@@ -1,0 +1,1 @@
+../Formula/inform6.rb

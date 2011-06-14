@@ -1,0 +1,1 @@
+../Formula/jslint4java.rb

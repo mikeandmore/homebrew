@@ -1,0 +1,1 @@
+../Formula/smartmontools.rb

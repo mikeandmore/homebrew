@@ -1,0 +1,1 @@
+../Formula/mecab-ipadic.rb

@@ -1,0 +1,1 @@
+../Formula/ssh-copy-id.rb

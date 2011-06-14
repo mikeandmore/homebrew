@@ -1,0 +1,1 @@
+../Formula/shared-mime-info.rb
