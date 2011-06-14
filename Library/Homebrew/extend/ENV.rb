@@ -14,20 +14,10 @@ module HomebrewEnvExtension
     # CMake ignores the variables above
     self['CMAKE_PREFIX_PATH'] = "#{HOMEBREW_PREFIX}"
 
-    if MACOS_VERSION >= 10.6 and (self['HOMEBREW_USE_LLVM'] or ARGV.include? '--use-llvm')
-      self['CC'] = "#{MacOS.xcode_prefix}/usr/bin/llvm-gcc"
-      self['CXX'] = "#{MacOS.xcode_prefix}/usr/bin/llvm-g++"
-      cflags = ['-O4'] # link time optimisation baby!
-    elsif MACOS_VERSION >= 10.6 and (self['HOMEBREW_USE_GCC'] or ARGV.include? '--use-gcc')
-      self['CC'] = "#{MacOS.xcode_prefix}/usr/bin/gcc"
-      self['CXX'] = "#{MacOS.xcode_prefix}/usr/bin/g++"
-      cflags = ['-O3']
-    else
-      # If these aren't set, many formulae fail to build
-      self['CC'] = '/usr/gnu/bin/cc'
-      self['CXX'] = '/usr/bin/gcc'
-      cflags = ['-O3']
-    end
+    # If these aren't set, many formulae fail to build
+    self['CC'] = `/usr/bin/which cc`.chomp
+    self['CXX'] = `/usr/bin/which gcc`.chomp
+    cflags = ['-O3']
 
     # In rare cases this may break your builds, as the tool for some reason wants
     # to use a specific linker. However doing this in general causes formula to

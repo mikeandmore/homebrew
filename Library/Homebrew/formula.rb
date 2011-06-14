@@ -356,12 +356,12 @@ class Formula
   end
 
   def self.aliases
-    Dir["#{HOMEBREW_REPOSITORY}/Library/Soliases/*"].map{ |f| File.basename f }.sort
+    Dir["#{HOMEBREW_REPOSITORY}/Library/Solaris/*"].map{ |f| File.basename f }.sort
   end
 
   def self.canonical_name name
     formula_with_that_name = HOMEBREW_REPOSITORY+"Library/Solaris/#{name}.rb"
-    possible_alias = HOMEBREW_REPOSITORY+"Library/Soliases/#{name}"
+    possible_alias = HOMEBREW_REPOSITORY+"Library/Solaris/#{name}"
     possible_cached_formula = HOMEBREW_CACHE_FORMULA+"#{name}.rb"
 
     if name.include? "/"
@@ -429,7 +429,7 @@ class Formula
   end
 
   def self.path name
-    HOMEBREW_REPOSITORY+"Library/Formula/#{name.downcase}.rb"
+    HOMEBREW_REPOSITORY+"Library/Solaris/#{name.downcase}.rb"
   end
 
   def deps
